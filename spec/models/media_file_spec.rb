@@ -18,7 +18,6 @@ describe MediaFile do
 
   context "Validations" do
     it { should validate_presence_of(:user_id) }
-    it { should validate_presence_of(:uploaded_file) }
   end
 
   context "Methods" do
