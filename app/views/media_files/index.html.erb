@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Uploaded Files</th>
+  </tr>
+  <% @media_files.each do |media_file| %>
+    <tr>
+      <td><%= media_file.uploaded_file_identifier %></td>
+      <td><%= link_to "Show", media_file %></td>
+      <td><%= link_to "Edit", edit_media_file_path(media_file) %></td>
+      <td><%= link_to "Destroy", media_file, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<p><%= link_to "New Asset", new_media_file_path %></p>

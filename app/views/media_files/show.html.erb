@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= image_tag @media_file.uploaded_file %>
+</p>
+<% if @media_file.belongs_to?(current_user) %>
+  <div class="share-media">
+    <%= form_tag share_media_file_path, remote: true do %>
+      <div class="field">
+        <%= label_tag :email, "Share File With" %><br>
+        <%= text_field_tag :email %>
+        <%= hidden_field_tag :id, @media_file.id %>
+      </div>
+      <div class="actions">
+        <%= submit_tag "Share" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_media_file_path(@media_file) if @media_file.user == current_user %> |
+<%= link_to 'Back', media_files_path %>
