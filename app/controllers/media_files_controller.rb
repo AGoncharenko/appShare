@@ -15,6 +15,7 @@ class MediaFilesController < ApplicationController
   end
 
   def edit
+    redirect_to media_files_path unless @media_file.user == current_user
   end
 
   def create
@@ -35,22 +36,26 @@ class MediaFilesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @media_file.update(media_file_params)
-        format.html { redirect_to @media_file, notice: 'Asset was successfully updated.' }
-        format.json { render :show, status: :ok, location: @media_file }
-      else
-        format.html { render :edit }
-        format.json { render json: @media_file.errors, status: :unprocessable_entity }
+    if @media_file.user == current_user
+      respond_to do |format|
+        if @media_file.update(media_file_params)
+          format.html { redirect_to @media_file, notice: 'Asset was successfully updated.' }
+          format.json { render :show, status: :ok, location: @media_file }
+        else
+          format.html { render :edit }
+          format.json { render json: @media_file.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   def destroy
-    @media_file.destroy
-    respond_to do |format|
-      format.html { redirect_to media_files_url, notice: 'Asset was successfully destroyed.' }
-      format.json { head :no_content }
+    if @media_file.user == current_user
+      @media_file.destroy
+      respond_to do |format|
+        format.html { redirect_to media_files_url, notice: 'Asset was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

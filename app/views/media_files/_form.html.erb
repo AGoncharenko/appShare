@@ -11,12 +11,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :link_url, "Insert video or website link" %>
-    <%= f.text_field :link_url %> <br><br>
-    <span class="file">
-      <%= f.label :uploaded_file, "File" %>
-      <%= f.file_field :uploaded_file %>
-    </span>
+    <% if @media_file.new_record? || @media_file.link_url.present? %>
+      <%= f.label :link_url, "Insert video or website link" %>
+      <%= f.text_field :link_url %> <br><br>
+    <% end %>
+    <% if @media_file.new_record? || @media_file.uploaded_file.present? %>
+      <span class="file">
+        <%= f.label :uploaded_file, "File" %>
+        <%= f.file_field :uploaded_file %>
+      </span>
+    <% end %>
   </div>
   <br>
   <div class="actions">

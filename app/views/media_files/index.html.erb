@@ -12,8 +12,8 @@
     <tr>
       <td><%= media_file.title %></td>
       <td><%= link_to "Show", media_file %></td>
-      <td><%= link_to "Edit", edit_media_file_path(media_file) %></td>
-      <td><%= link_to "Destroy", media_file, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Edit", edit_media_file_path(media_file) if media_file.user == current_user %></td>
+      <td><%= link_to"Destroy", media_file, :confirm => 'Are you sure?', :method => :delete if media_file.user == current_user %></td>
     </tr>
   <% end %>
   </tbody>
