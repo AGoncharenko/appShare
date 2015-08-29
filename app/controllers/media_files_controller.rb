@@ -18,6 +18,9 @@ class MediaFilesController < ApplicationController
   end
 
   def create
+    if media_file_params[:link_url].present?
+      media_file_params.delete :uploaded_file
+    end
     @media_file = current_user.media_files.new(media_file_params)
 
     respond_to do |format|
@@ -67,6 +70,6 @@ class MediaFilesController < ApplicationController
     end
 
     def media_file_params
-      params.require(:media_file).permit(:user_id, :uploaded_file)
+      params.require(:media_file).permit(:user_id, :uploaded_file, :link_url)
     end
 end

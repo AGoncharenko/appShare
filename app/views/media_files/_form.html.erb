@@ -11,10 +11,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :uploaded_file, "File" %><br>
-    <%= f.file_field :uploaded_file %>
+    <%= f.label :link_url, "Insert video or website link" %>
+    <%= f.text_field :link_url %> <br><br>
+    <span class="file">
+      <%= f.label :uploaded_file, "File" %>
+      <%= f.file_field :uploaded_file %>
+    </span>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit "Upload" %>
   </div>
 <% end %>
+<script>
+  $('#media_file_link_url').keyup(function (e) {
+    if($(this).val() != '') {
+      $('.file').hide();
+    } else {
+      $('.file').show();
+    }
+  });
+</script>

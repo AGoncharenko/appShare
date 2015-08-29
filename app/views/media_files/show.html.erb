@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag @media_file.uploaded_file %>
+  <% if @media_file.uploaded_file.present? %>
+    <%= image_tag @media_file.uploaded_file %>
+  <% else %>
+    <%= @media_file.link_url_html %>
+  <% end %>
 </p>
 <% if @media_file.belongs_to?(current_user) %>
   <div class="share-media">

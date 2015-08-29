@@ -15,6 +15,7 @@ gem 'devise_invitable', '~> 1.5.2'
 gem 'email_validator', '~> 1.6.0'
 gem 'carrierwave'
 gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'auto_html', '~> 1.6.4'
 
 group :development, :test do
   gem 'byebug'

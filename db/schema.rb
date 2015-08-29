@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829143028) do
+ActiveRecord::Schema.define(version: 20150829162615) do
 
   create_table "media_files", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "uploaded_file"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "link_url"
   end
 
   create_table "shared_media_files", force: :cascade do |t|

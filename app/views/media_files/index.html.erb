@@ -10,7 +10,7 @@
   <tbody>
   <% @media_files.each do |media_file| %>
     <tr>
-      <td><%= media_file.uploaded_file_identifier %></td>
+      <td><%= media_file.title %></td>
       <td><%= link_to "Show", media_file %></td>
       <td><%= link_to "Edit", edit_media_file_path(media_file) %></td>
       <td><%= link_to "Destroy", media_file, :confirm => 'Are you sure?', :method => :delete %></td>
